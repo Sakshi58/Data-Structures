@@ -1,0 +1,66 @@
+#include<iostream>
+#include<malloc.h>
+struct Node
+{
+	int data;
+	Node *prev , *next; 		//inter-referential pointer
+};
+Node  *first , *temp , *ttemp;	//global variable declaration
+
+//initialization
+void  init()
+{
+	first = temp=ttemp=NULL;	
+}
+
+//creating the first node
+void create_first(int x) 
+{
+	first=(Node  *)malloc(sizeof(Node));
+	first->data=x;    			///"->" de-referencing operator
+	first->prev=NULL;
+	first->next=NULL;
+}
+
+//adding other nodes
+void addnodes(int x)
+{
+	temp=first;
+	while(temp->next!=NULL)
+	  temp=temp->next;
+	//creating other node
+	ttemp=(Node *)malloc(sizeof(Node));
+	ttemp->data=x;
+	ttemp->next=NULL;
+	ttemp->prev=temp;
+	temp->next=ttemp;
+}
+
+////display
+void  disp()
+{
+	temp=first;
+	while(temp!=NULL)
+	{
+		std::cout<<"\n"<<temp->data;
+		temp=temp->next;
+	}
+	
+}
+
+//driver code
+int main()
+{
+	init();
+	create_first(10);
+	addnodes(20);
+	addnodes(30);
+	addnodes(40);
+	addnodes(50);
+	addnodes(60);
+	addnodes(70);
+	addnodes(80);
+	addnodes(90);
+	disp();
+}
+
