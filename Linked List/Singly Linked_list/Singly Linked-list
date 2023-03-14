@@ -1,7 +1,7 @@
 #include<iostream>
 #include<malloc.h>
 using namespace std;
-///creating the structure
+///creating the structure Node 
 struct Node
 {
 	int data;
